@@ -47,6 +47,19 @@ The main objectives of the project were to:
 
 A VirtualBox NAT network with DHCP was configured for the virtual machine. Connectivity from Kali Linux was verified by successfully reaching both `8.8.8.8` and `google.com`.
 
+![VirtualBox NAT Network Configuration](screenshots/photo_5985838926679183134_y.jpg)
+
+*Figure 1 — VirtualBox NAT Network configuration with DHCP enabled for the Kali Linux virtual lab.*
+![Kali Linux Clean Snapshot](screenshots/photo_5985838926679183137_y.jpg)
+
+*Figure 2 — Clean Kali Linux VirtualBox snapshot created after completing the initial virtual lab setup.*
+![Kali Virtual Machine Network Adapter Configuration](screenshots/photo_5985838926679183139_y.jpg)
+
+*Figure 3 — Kali Linux virtual machine network adapter configured to use the VirtualBox NAT Network.*
+![Kali Linux Network Connectivity Verification](screenshots/photo_5985838926679183157_y.jpg)
+
+*Figure 4 — Kali Linux network connectivity verification showing the eth0 IPv4 address and successful ICMP tests to 8.8.8.8 and google.com.*
+
 ---
 
 ## Tools and Technologies
@@ -94,6 +107,13 @@ The traffic pattern demonstrated reconnaissance against multiple ports on the ta
 
 ---
 
+![Lab 3 Identifying the Attacker Result](screenshots/photo_5988019601834446966_w.jpg)
+
+*Figure 5 — Lab 3 investigation result demonstrating successful identification of the attacker, target, source port, probed ports and exposed services during TCP SYN reconnaissance analysis.*
+
+---
+
+## Lab 4 – TCP Stream Analysis
 ## Lab 4 — TCP Stream Analysis
 
 This exercise focused on reconstructing TCP conversations using Wireshark's **Follow TCP Stream** functionality.
@@ -124,6 +144,10 @@ Remove before publishing.
 
 This demonstrated that information hidden from the visible webpage can still be transmitted to the client and recovered through network analysis.
 
+![Lab 5 Follow TCP Stream Analysis](screenshots/photo_5988019601834446988_w.jpg)
+
+*Figure 6 — Follow TCP Stream analysis showing the plaintext `report.txt` file recovered from HTTP traffic, including the HTTP 200 OK response and transmitted report contents.*
+
 ---
 
 ## Lab 6 — HTTP Plaintext Credential Exposure
@@ -150,6 +174,10 @@ Because HTTP does not provide transport encryption, authentication information c
 
 **Recommended mitigation:** Use HTTPS/TLS for authentication and sensitive web traffic.
 
+![Lab 6 HTTP POST Login Traffic](screenshots/photo_5988019601834446992_w.jpg)
+
+*Figure 7 — Wireshark HTTP analysis using the `http.request.method == "POST"` display filter, showing two plaintext login requests from `192.168.10.45` to `192.168.10.20` through the `/login` endpoint.*
+
 ---
 
 ## Lab 7 — FTP Brute-Force Investigation
@@ -174,6 +202,10 @@ The packet capture contained repeated `USER` and `PASS` commands, demonstrating 
 - Apply login rate limiting or account lockout controls.
 - Monitor repeated authentication failures.
 - Use stronger authentication controls where possible.
+
+- ![Lab 7 FTP Brute-Force Investigation Result](screenshots/photo_5988019601834447009_w.jpg)
+
+*Figure 8 — Lab 7 FTP brute-force investigation result showing successful completion of all investigation tasks, including identification of the target, attacker, username, failed authentication attempts, successful authentication response and brute-force attack type.*
 
 ---
 
@@ -202,6 +234,10 @@ RTP traffic was then analysed to identify the media stream.
 The exercise demonstrated that unencrypted VoIP traffic may expose call metadata and potentially allow captured audio to be reconstructed.
 
 **Recommended mitigation:** Protect VoIP communications using encrypted signalling and **SRTP** for media.
+
+![Lab 8 SIP VoIP Traffic Analysis](screenshots/photo_5988019601834447011_w.jpg)
+
+*Figure 9 — Wireshark VoIP investigation using the `sip.Method == "INVITE"` display filter to identify SIP call setup traffic from `192.168.10.45` to `192.168.10.52`, forming part of the analysis of the VoIP call between extensions `101` and `202`.*
 
 ---
 
